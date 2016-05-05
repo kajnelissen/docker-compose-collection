@@ -1,0 +1,20 @@
+web:
+  image: php:7.0.4-apache
+  links:
+    - redis
+    - mariadb
+  volumes:
+    - C:/Users/kaj.nelissen/src:/var/www/html
+    - ./logs:/var/logs
+  ports:
+    - "80:80"
+
+redis:
+  image: redis:3.0.7-alpine
+  ports:
+    - "6379:6379"
+
+mariadb:
+  image: kajnelissen/docker-mariadb:latest
+  ports:
+    - "3306:3306"
